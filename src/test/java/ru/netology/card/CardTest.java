@@ -1,7 +1,6 @@
 package ru.netology.card;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -16,11 +15,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CardTest {
     private WebDriver driver;
-
-    @BeforeAll
-    static void setUpAll() {
-        System.setProperty("web-driver.chrome.driver", "driver/windows/chromedriver");
-    }
 
     @BeforeEach
     void setUp() {
@@ -45,7 +39,7 @@ public class CardTest {
         driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79034567890");
         driver.findElement(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         driver.findElement(By.cssSelector("[type=\"button\"]")).click();
-        String text = driver.findElement(By.cssSelector("[data-test-id]")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id=\"order-success\"]")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
 
     }
